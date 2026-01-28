@@ -223,11 +223,14 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 </details>
 
 
+
+
+
+
 ### In-Distribution Evaluation
 
-
-<p align="left">
-  <video src="./results/PandaPickCubeOrientation/id.mp4" controls muted autoplay loop></video>
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/f6a32fe2-49e1-431d-b0ec-3d64705da0d3" controls muted autoplay loop></video>
   <br>
   <em>Standard Environment</em>
 </p>
@@ -238,17 +241,17 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 <table align="left">
   <tr>
     <td align="left" width="33%">
-      <video src="./results/PandaPickCubeOrientation/arm.mp4" controls muted autoplay loop></video>
+      <video src="https://github.com/user-attachments/assets/dd75296a-7df1-4cc5-a18c-440fcf4ceaaf" controls muted autoplay loop></video>
       <br>
       <em>Arm Over Perturbation</em>
     </td>
     <td align="left" width="33%">
-      <video src="./results/PandaPickCubeOrientation/object.mp4" controls muted autoplay loop></video>
+      <video src="https://github.com/user-attachments/assets/4c1d8dd0-ee28-4e18-8e71-21eea2832085" controls muted autoplay loop></video>
       <br>
       <em>Object Over Randomization</em>
     </td>
     <td align="left" width="33%">
-      <video src="./results/PandaPickCubeOrientation/both.mp4" controls muted autoplay loop></video>
+      <video src="https://github.com/user-attachments/assets/4ce2672b-4fd6-4a70-ad41-7b80a441d294" controls muted autoplay loop></video>
       <br>
       <em>Both</em>
     </td>
@@ -467,7 +470,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 ### In-Distribution Evaluation
 
 <p align="left">
-  <video src="./results/PandaOpenCabinet/id.mp4" controls muted autoplay loop></video>
+  <video src="https://github.com/user-attachments/assets/03d6d3c5-d6be-4984-bf45-73cad2be1d8b" controls muted autoplay loop></video>
   <br>
   <em>Standart Environment</em>
 </p>
@@ -475,7 +478,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 ### Out-of-Distribution Evaluation
 
 <p align="left">
-  <video src="./results/PandaOpenCabinet/arm.mp4" controls muted autoplay loop></video>
+  <video src="https://github.com/user-attachments/assets/87217a83-c6dc-492b-8e7d-590f545c1334" controls muted autoplay loop></video>
   <br>
   <em>Arm Over Perturbation</em>
 </p>
