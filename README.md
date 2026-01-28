@@ -16,17 +16,18 @@ In this repository, the following environments are used:
   - AlohaSinglePegInsertion
 
 
-## Evaluation Philosophy
+### Evaluation Philosophy
 
 Two different evaluation regimes are used:
 
-### 1. Standard (In-Distribution) Evaluation
+#### 1. Standard (In-Distribution) Evaluation
 - The environment reset function is used as defined in the environment.
-### 2. Out-of-Distribution (OOD) Evaluation
+
+#### 2. Out-of-Distribution (OOD) Evaluation
 - Initial conditions are sampled outside the training randomization bounds.
 
 
-## Simple Usage
+### Simple Usage
 Once you install [mujoco playground](https://github.com/google-deepmind/mujoco_playground), you can list all available mujoco playground environments by running:
 ```bash
 python -c "from mujoco_playground import registry; print(registry.manipulation.ALL_ENVS)"
@@ -46,11 +47,11 @@ To evaluate a policy, run:
 python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 ```
 
-## Evaluations
+# Evaluations
 
-### PandaPickCube
+## PandaPickCube
 
-#### Environment And Training Details
+### Environment And Training Details
 
 <details>
 <summary><strong>Observation Vector</strong></summary>
@@ -222,7 +223,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 </details>
 
 
-#### In-Distribution Evaluation
+### In-Distribution Evaluation
 
 
 <p align="left">
@@ -232,7 +233,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 </p>
 
 
-#### Out-of-Distribution Evaluation
+### Out-of-Distribution Evaluation
 
 <table align="left">
   <tr>
@@ -255,7 +256,8 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 </table>
 
 
-### PandaOpenCabinet
+## PandaOpenCabinet
+
 <details>
 <summary><strong>Observation Vector</strong></summary>
 <table>
@@ -462,7 +464,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
 </details>    
 
 
-#### In-Distribution Evaluation
+### In-Distribution Evaluation
 
 <p align="left">
   <video src="./results/PandaOpenCabinet/id.mp4" controls muted autoplay loop></video>
@@ -470,7 +472,7 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
   <em>Standart Environment</em>
 </p>
 
-#### Out-of-Distribution Evaluation
+### Out-of-Distribution Evaluation
 
 <p align="left">
   <video src="./results/PandaOpenCabinet/arm.mp4" controls muted autoplay loop></video>
@@ -478,9 +480,8 @@ python test_in_mujoco.py --env_name <env_name> --policy_path <policy_path>
   <em>Arm Over Perturbation</em>
 </p>
 
-### PandaRobotiqPushCube
+
+## AlohaHandOver
 not written yet
-### AlohaHandOver
-not written yet
-### AlohaSinglePegInsertion
+## AlohaSinglePegInsertion
 not written yet
