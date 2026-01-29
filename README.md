@@ -950,3 +950,9 @@ Note: Training was done for 88.473.600 timesteps instead of 100.000.000 timestep
 
 ### Evaluation
 Note: This model unfortunatelly couldnt trained in local machine due high training time.
+
+Training results for 26214400 timesteps:
+<video src="https://github.com/user-attachments/assets/98da92f2-d9aa-41af-8181-03ea69bbde37"></video>
+
+
+
