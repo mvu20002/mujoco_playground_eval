@@ -717,7 +717,7 @@ Note: Training was done for 88.473.600 timesteps instead of 100.000.000 timestep
 <video src="https://github.com/user-attachments/assets/69c789f7-664f-4f3c-9c66-24ecb419d166"></video>
 
 #### Box Initial Configuration Over Randomization
-<video src="https://github.com/user-attachments/assets/1db02576-1e57-420f-a0bd-02fd8bc53c16"></video>
+<video src="https://github.com/user-attachments/assets/50aabc59-e2a7-4771-ba84-05ea511eb425"></video>
 
 # 4) AlohaSinglePegInsertion
 <details>
