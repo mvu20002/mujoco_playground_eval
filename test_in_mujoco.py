@@ -36,17 +36,30 @@ def randomize_panda_pick_cube(state, rng):
     q = np.array(state.data.qpos)
     qd = np.array(state.data.qvel)
     
-    # Indices 9-12 are typically the object in these envs, but safer to check if possible.
-    # For now assuming standard indices for PandaPickCube*
-    # Cube joint is usually after the panda arm (7 dof) + fingers (2 dof).
-    # Panda: 0-6 (arm), 7-8 (fingers) -> 9 joints total? 
-    # Let's verify standard indices. 
-    # Usually in MJX scenes: 
-    # qpos: 7 (panda) + 2 (fingers) = 9. So object starts at 9.
-    # But let's be careful. The original code used 9:12.
-    
     q[9:12] = new_pos
     qd[9:15] = 0.0 
+    
+    new_mjx_data = state.data.replace(
+        qpos=jp.array(q),
+        qvel=jp.array(qd)
+    )
+    return state.replace(data=new_mjx_data)
+
+def randomize_panda_handover(state, rng):
+    """Specific randomization for PandaHandOver."""
+    while 1:
+        new_pos = np.array([0.0, 0.0, 0.05]) + np.random.uniform(-0.2, 0.2, size=3)
+        new_pos[2] = 0.05 # Keep on table height
+        # if too close to origin, skip
+        if np.linalg.norm(new_pos) < 0.1:
+            continue
+        break
+    
+    q = np.array(state.data.qpos)
+    qd = np.array(state.data.qvel)
+    
+    q[16:19] = new_pos
+    qd[16:19] = 0.0 
     
     new_mjx_data = state.data.replace(
         qpos=jp.array(q),
@@ -81,6 +94,30 @@ def randomize_joints_global(state, rng):
         qvel=jp.array(qd)
     )
     return state.replace(data=new_mjx_data)
+
+def randomize_joints_handover(state, rng):
+    """Specific randomization for PandaHandOver."""
+    first_left_three_joints_delta = np.random.uniform(-1.6, 1.6, size=3)
+    last_left_three_joints_delta = np.random.uniform(-0.8, 0.8, size=3)
+    first_right_three_joints_delta = np.random.uniform(-1.6, 1.6, size=3)
+    last_right_three_joints_delta = np.random.uniform(-0.8, 0.8, size=3)
+    
+    q = np.array(state.data.qpos)
+    qd = np.array(state.data.qvel)
+    
+    q[1:4] += first_left_three_joints_delta
+    q[4:7] += last_left_three_joints_delta
+    q[9:12] += first_right_three_joints_delta
+    q[12:15] += last_right_three_joints_delta
+    qd[1:15] = 0.0
+    
+    new_mjx_data = state.data.replace(
+        qpos=jp.array(q),
+        qvel=jp.array(qd)
+    )
+    return state.replace(data=new_mjx_data)
+    
+    
 
 def main():
     parser = argparse.ArgumentParser(description='Run MuJoCo visualization with policy.')
@@ -233,11 +270,18 @@ def main():
                      if 'PickCube' in env_name or 'PushCube' in env_name:
                          if args.randomize_domain: 
                             state = randomize_panda_pick_cube(state, rng)
+                    
+                     if 'HandOver' in env_name:
+                         if args.randomize_domain: 
+                            state = randomize_panda_handover(state, rng)
                      elif 'OpenCabinet' in env_name:
                          pass
 
                 if args.randomize_joints:
-                    state = randomize_joints_global(state, rng)
+                    if 'HandOver' in env_name:
+                        state = randomize_joints_handover(state, rng)
+                    else:
+                        state = randomize_joints_global(state, rng)
                 
                 step_idx = 0
                 episode_reward = 0
@@ -370,6 +414,9 @@ def main():
                         if 'PickCube' in env_name or 'PushCube' in env_name:
                             if args.randomize_domain: # Use flag to confirm extra randomization
                                 state = randomize_panda_pick_cube(state, rng)
+                        if 'HandOver' in env_name:
+                            if args.randomize_domain: # Use flag to confirm extra randomization
+                                state = randomize_panda_handover(state, rng)
                         elif 'OpenCabinet' in env_name:
                             # Add logic if needed
                             pass
